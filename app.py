@@ -1,8 +1,13 @@
 from flask import Flask, render_template, request
 import pickle
 import pandas as pd
+import os
 
-app = Flask(__name__)
+# ===============================
+# Auto-train model if not present
+# ===============================
+if not os.path.exists("model/loan_model.pkl"):
+    os.system("python model_training.py")
 
 # ===============================
 # Load Model Artifacts
@@ -10,6 +15,8 @@ app = Flask(__name__)
 model = pickle.load(open("model/loan_model.pkl", "rb"))
 scaler = pickle.load(open("model/scaler.pkl", "rb"))
 feature_names = pickle.load(open("model/features.pkl", "rb"))
+
+app = Flask(__name__)
 
 @app.route("/")
 def home():
@@ -41,15 +48,15 @@ def predict():
         # One-hot encode input
         input_df = pd.get_dummies(input_df)
 
-        # Add missing columns
+        # Add missing columns from training
         for col in feature_names:
             if col not in input_df.columns:
                 input_df[col] = 0
 
-        # Ensure correct order
+        # Ensure correct column order
         input_df = input_df[feature_names]
 
-        # Scale
+        # Scale input
         input_scaled = scaler.transform(input_df)
 
         # Predict
@@ -64,5 +71,8 @@ def predict():
             prediction="Error occurred. Please check input values."
         )
 
+# ===============================
+# Run App (Render Compatible)
+# ===============================
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
