@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Approval Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Loan Approval Prediction System</h2>
+
+    <form action="/predict" method="post">
+
+        <label>Gender</label>
+        <select name="Gender" required>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select>
+
+        <label>Married</label>
+        <select name="Married" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label>Dependents</label>
+        <input type="number" name="Dependents" min="0" max="3" required>
+
+        <label>Education</label>
+        <select name="Education" required>
+            <option value="1">Graduate</option>
+            <option value="0">Not Graduate</option>
+        </select>
+
+        <label>Self Employed</label>
+        <select name="Self_Employed" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label>Applicant Income</label>
+        <input type="number" name="ApplicantIncome" required>
+
+        <label>Coapplicant Income</label>
+        <input type="number" name="CoapplicantIncome" required>
+
+        <label>Loan Amount</label>
+        <input type="number" name="LoanAmount" required>
+
+        <label>Loan Amount Term</label>
+        <input type="number" name="Loan_Amount_Term" required>
+
+        <label>Credit History</label>
+        <select name="Credit_History" required>
+            <option value="1">Good</option>
+            <option value="0">Bad</option>
+        </select>
+
+        <label>Property Area</label>
+        <select name="Property_Area" required>
+            <option value="2">Urban</option>
+            <option value="1">Semiurban</option>
+            <option value="0">Rural</option>
+        </select>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result
+        {% if 'Approved' in prediction %}approved{% else %}rejected{% endif %}">
+        {{ prediction }}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

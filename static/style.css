@@ -1,0 +1,142 @@
+/* ================================
+   Global Reset & Base Styling
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ================================
+   Page Background
+================================ */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e3f2fd, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ================================
+   Main Card Container
+================================ */
+.container {
+    width: 430px;
+    background: #ffffff;
+    padding: 28px 32px;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ================================
+   Heading
+================================ */
+.container h2 {
+    text-align: center;
+    margin-bottom: 22px;
+    color: #0d47a1;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+}
+
+/* ================================
+   Form Labels
+================================ */
+label {
+    display: block;
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333333;
+}
+
+/* ================================
+   Inputs & Select Fields
+================================ */
+input,
+select {
+    width: 100%;
+    margin-top: 6px;
+    padding: 9px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+}
+
+/* Focus State */
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #1976d2;
+    box-shadow: 0 0 0 1px rgba(25, 118, 210, 0.2);
+}
+
+/* ================================
+   Submit Button
+================================ */
+button {
+    width: 100%;
+    margin-top: 22px;
+    padding: 11px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #1976d2;
+    color: #ffffff;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.3s ease,
+                transform 0.1s ease;
+}
+
+/* Hover & Active */
+button:hover {
+    background-color: #0d47a1;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* ================================
+   Prediction Result
+================================ */
+.result {
+    margin-top: 18px;
+    padding: 12px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 6px;
+}
+
+/* Approved */
+.approved {
+    color: #1b5e20;
+    background-color: #e8f5e9;
+    border: 1px solid #2e7d32;
+}
+
+/* Rejected */
+.rejected {
+    color: #b71c1c;
+    background-color: #fdecea;
+    border: 1px solid #c62828;
+}
+
+/* ================================
+   Responsive Design
+================================ */
+@media (max-width: 480px) {
+    .container {
+        width: 92%;
+        padding: 22px;
+    }
+
+    .container h2 {
+        font-size: 20px;
+    }
+}
